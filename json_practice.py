@@ -67,4 +67,11 @@ parsed =  Parser(text,"TITLE=","NETWORK",";",True)
 
 print(parsed)
 gen_parsetree(parsed)
-print(json.dumps(gen_parsetree(parsed),indent=5))
+res = gen_parsetree(parsed)
+print(json.dumps(res,indent=5))
+def dfs(res):
+    for i in range(1,len(res)):
+        if(type(res[i])==type([])):
+            dfs(res[i])
+    print(res)
+dfs(res)
