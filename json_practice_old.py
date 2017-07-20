@@ -1,7 +1,10 @@
 import json
 
-result = ""
-tmp_count = 1
+
+# RULE #
+m_and = '%s =  and I1 %s, %s'
+m_or = '%s = or I1 %s %s'
+m_assign = 'I1 %s = I1 %s'
 
 def gen_parsetree(st_list):
     res = 'RLO'
@@ -38,31 +41,6 @@ def Parser(text, begin, end, data_split,remove_indent) :
         x = x.strip()
         instructions.append(x[:-1].split(" "))
     return instructions[1:-1]
-    
-def dfs(res, Table) :
-    global result
-    global tmp_count
-    for i in range(1,len(res)):
-        if(type(res[i])==type([])):
-            dfs(res[i], Table)
-            res[i] = '%TEMP'+str(tmp_count-1)
-    if(len(res)>3):
-        for i in range(1,len(res)-1):
-            if(i==1):
-                result+=Table[res[0]][0]%('%TEMP'+str(tmp_count),res[i],res[i+1])+'\n'
-            else:
-                result+=Table[res[0]][0]%('%TEMP'+str(tmp_count),'%TEMP'+str(tmp_count-1),res[i+1])+'\n'
-            tmp_count+=1
-    elif(len(res)==3):
-        if(Table[res[0]][1]==3):
-            result+=Table[res[0]][0]%('%TEMP'+str(tmp_count),res[1],res[2])+'\n'
-        elif(Table[res[0]][1]==2):
-            result+=Table[res[0]][0]%(res[1],res[2])+'\n'
-    
-def Converter(tree) :
-    with open('new_rule.json') as data_file:
-        table = json.load(data_file)
-    dfs(tree, table)
 
 text = '''
 A "Tag_1";
@@ -86,9 +64,14 @@ O "Tag_3";
 
 print (text)
 parsed =  Parser(text,"TITLE=","NETWORK",";",True)
+
+print(parsed)
 gen_parsetree(parsed)
 res = gen_parsetree(parsed)
 print(json.dumps(res,indent=5))
-Converter(res)
-
-print (result)
+def dfs(res):
+    for i in range(1,len(res)):
+        if(type(res[i])==type([])):
+            dfs(res[i])
+    print(res)
+dfs(res)

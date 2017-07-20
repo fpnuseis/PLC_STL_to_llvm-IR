@@ -1,0 +1,12 @@
+and
+or
+=
+
+DEFINE I1 and i1 %VAR1 i1 %VAR2
+%TEMP = AND i1 VAR1, i1 VAR2
+
+DEFINE I1 or I1 %VAR1 I1 %VAR2
+%TEMP = OR i1 VAR1, i1 VAR2
+
+DEFINE VOID = i1 %VAR1 i1 %VAR2 
+i1 %VAR1 = i1 %VAR2
