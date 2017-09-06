@@ -44,8 +44,11 @@ def dfs(res, Table) :
     global tmp_count
     for i in range(1,len(res)):
         if(type(res[i])==type([])):
-            dfs(res[i], Table)
-            res[i] = '%TEMP'+str(tmp_count-1)
+            sub =  dfs(res[i], Table)
+            if(type(sub)==type('a')):
+                res[i] = sub
+            if(i==len(res)-1):
+                tmp_count=1
     if(len(res)>3):
         for i in range(1,len(res)-1):
             if(i==1):
@@ -56,8 +59,12 @@ def dfs(res, Table) :
     elif(len(res)==3):
         if(Table[res[0]][1]==3):
             result+=Table[res[0]][0]%('%TEMP'+str(tmp_count),res[1],res[2])+'\n'
+            tmp_count+=1
         elif(Table[res[0]][1]==2):
             result+=Table[res[0]][0]%(res[1],res[2])+'\n'
+        
+    return '%TEMP'+str(tmp_count-1)
+    
     
 def Converter(tree) :
     with open('new_rule.json') as data_file:
@@ -88,7 +95,7 @@ print (text)
 parsed =  Parser(text,"TITLE=","NETWORK",";",True)
 gen_parsetree(parsed)
 res = gen_parsetree(parsed)
-print(json.dumps(res,indent=5))
+print(json.dumps(res,indent=8))
 Converter(res)
 
 print (result)
