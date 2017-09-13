@@ -1,43 +1,17 @@
 def mapper (input_, operation, output_) :
     input_num = len(input_)
+    param = ''
+    for i in range(0,len(input_)):
+        param+=str(input_[i])
+        if(i!=len(input_)-1):
+            param+=' '
 
-    if input_num == 1 :
-        one_parameter (input_, operation, output_)
-    elif input_num == 2 :
-        print (double_parameter (input_, operation, output_))
-    elif input_num == 3 :
-        trip_parameter (input_, operation, output_)
-
-def one_parameter (input_, operation, output_) :
     llvm = (
         output_ + ' = ' +
-        operation_mapper(operation) + ' ' +
-        str(input_[0])
+        operation_mapper(operation) + ' ' + 
+        param
     )
-
-    return llvm
-
-def double_parameter (input_, operation, output_) :
-    d_type = "i1"
-    llvm = (
-        output_ + ' = ' +
-        operation_mapper(operation) + ' ' +
-        str(input_[0]) + ' ' +
-        str(input_[1])
-    )
-
-    return llvm
-
-def trip_parameter (input_, operation, output_) :
-    d_type = "i1"
-    llvm = (
-        output_ + ' = ' +
-        operation_mapper(operation) + ' ' +
-        str(input_[0]) + ' ' +
-        str(input_[1]) + ' ' +
-        str(input_[2])
-    )
-
+    
     return llvm
 
 # depreciated
