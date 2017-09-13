@@ -1,5 +1,8 @@
 import re
 
+# TODO Network, Label
+# TODO Input handling
+
 def Parser(text) :
     instructions = []
     
@@ -19,15 +22,47 @@ def Parser(text) :
         
     return instructions
 
-text = '''A(;
-ON      "Data_block_1".m2;
-O "Data_block_1".m4;
-);
-A "Data_block_1".m6;
-A(;
-ON "Data_block_1".m7;
-O "Data_block_1".m8;
-);
-= "Data_block_1".m5;'''
+# def CodeExtractor(filename) :
+    
+
+text = ''' a1:      A(;
+      A(;
+      O(;
+      L "Data_block_1".test_Dint;
+      L "Data_block_1".test_Dint1;
+      +D;
+      T "Data_block_1".test_Dint;
+      AN OV;
+      SAVE;
+      CLR;
+      A BR;
+      );
+      O(;
+      L "Data_block_1".test_Dint;
+      L "Data_block_1".test_Dint1;
+      /D;
+      T "Data_block_1".test_Dint;
+      AN OV;
+      SAVE;
+      CLR;
+      A BR;
+      );
+      );
+      JNB Label_0;
+      L "Data_block_1".test_Dint;
+      L "Data_block_1".test_Dint1;
+      -D;
+      T "Data_block_1".test_Dint;
+      AN OV;
+      SAVE;
+      CLR;
+Label_0:      A BR;
+      );
+      JNB Label_1;
+      L "Data_block_1".test_Dint;
+      L "Data_block_1".test_Dint1;
+      *D;
+      T "Data_block_1".test_Dint;
+Label_1:      NOP 0;'''
 
 print ( Parser(text) )
