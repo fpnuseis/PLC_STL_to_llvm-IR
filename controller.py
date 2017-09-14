@@ -5,11 +5,11 @@ def mapper (input_) :
 
     llvm_operator, register, status = operation_mapper(operator)
 
-    if operator == 'none' :
+    if register == 'none' :
         llvm = 'jmp ' + label + '\n'
     else :
         llvm = 'Test :\n'
-        llvm += '%cond = icmp eq i32 ' + register + ', ' + str(status) + '\n'
+        llvm += '%cond = icmp eq i1 ' + register + ', ' + str(status) + '\n'
         llvm += 'br i1 %cond, label %IfEqual, label %IfUnEqual\n'
         llvm += 'IfEqual :\n'
         llvm += llvm_operator + ' ' + label + '\n'
