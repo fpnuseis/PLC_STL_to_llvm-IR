@@ -30,10 +30,9 @@ InstructionList = {
     ">D" : "math",
     "<D" : "math",
     # BitLogic Library
-    "A" : "bitlogic",
-    "O" : "bitlogic",
-    "A(" : "bitlogic",
-    "O" : "bitlogic",
+    "AND" : "bitlogic",
+    "OR" : "bitlogic",
+    "=" : "bitlogic",
     # Controller Library
     "JU" : "controller",
     "JL" : "controller",
