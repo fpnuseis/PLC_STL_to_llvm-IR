@@ -7,7 +7,6 @@ def convert (input_) :
     llvm_operator = operation_mapper(operator)
 
     llvm = llvm_operator%tuple(param)
-    print(llvm)
     return llvm
 
 

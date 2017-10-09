@@ -53,8 +53,8 @@ def Mapper (input_) :
     if InstructionList[instruction] == 'math' :
         result = math_.convert(input_)
 
-#    elif InstructionList[instruction] == 'bitlogic' :
-#        result = bitlogic.convert(input_)
+    elif InstructionList[instruction] == 'bitlogic' :
+        result = bitlogic.convert(input_)
 
     elif InstructionList[instruction] == 'controller' :
         result = controller_.convert(input_)

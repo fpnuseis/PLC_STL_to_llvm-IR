@@ -10,12 +10,11 @@ def modifier (input_path) :
     label = ''
 
     while(line):
-        line = line.strip("\n")
+        line = line.strip()
         if (line == "BEGIN") :
             while(line):
                 line = f.readline()
-                line = line.strip("\n")
-
+                line = line.strip()
                 if ("TITLE" in line):
                     pass
 
@@ -46,3 +45,8 @@ def modifier (input_path) :
         line = f.readline()
     f.close()
     return tmp, block_name
+
+res, name = modifier('./math.txt')
+
+for i in range(0,len(res)):
+    print(res[i])
