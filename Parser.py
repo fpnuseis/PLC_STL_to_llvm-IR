@@ -7,62 +7,47 @@ def Parser(text) :
     instructions = []
     
     lines = text.split("\n")
-
     isTarget = -1
     for x in lines :
+        if(x==''):
+          continue
         # processing string
         x = x.strip()
         pat = re.compile('\s+')
         x = pat.sub(' ',x) 
-
         # remove last ; & append to instructions
-        if (x[-1]==";") :
+        if (x[len(x)-1]==";") :
             instructions.append(x[:-1].split(" "))
             
         
     return instructions
 
-# def CodeExtractor(filename) :
-    
+def CodeExtractor(filename) :
+    output_ = []
+    idx = -1
+    f = open(filename, "r")
+    line = f.readline()
+    block_name = line.strip().split(" ")[0]
+    while(line):
+        line = line.strip()
+        if( line == "BEGIN" ) :
+            while(line):
+                line = f.readline()
+                line = line.strip()
+                if("TITLE" in line):
+                    pass
+                elif(line=="NETWORK"):
+                    idx+=1
+                    output_.append('')
+                elif(line=="END_"+block_name):
+                    break
+                else:
+                    output_[idx]+=line.strip()+"\n"
+        line = f.readline()
+    f.close()
+    return output_,block_name
 
-text = ''' a1:      A(;
-      A(;
-      O(;
-      L "Data_block_1".test_Dint;
-      L "Data_block_1".test_Dint1;
-      +D;
-      T "Data_block_1".test_Dint;
-      AN OV;
-      SAVE;
-      CLR;
-      A BR;
-      );
-      O(;
-      L "Data_block_1".test_Dint;
-      L "Data_block_1".test_Dint1;
-      /D;
-      T "Data_block_1".test_Dint;
-      AN OV;
-      SAVE;
-      CLR;
-      A BR;
-      );
-      );
-      JNB Label_0;
-      L "Data_block_1".test_Dint;
-      L "Data_block_1".test_Dint1;
-      -D;
-      T "Data_block_1".test_Dint;
-      AN OV;
-      SAVE;
-      CLR;
-Label_0:      A BR;
-      );
-      JNB Label_1;
-      L "Data_block_1".test_Dint;
-      L "Data_block_1".test_Dint1;
-      *D;
-      T "Data_block_1".test_Dint;
-Label_1:      NOP 0;'''
+res, block_name = CodeExtractor('./math.txt')
 
-print ( Parser(text) )
+for i in range(0,len(res)):
+  print(Parser(res[i]))
