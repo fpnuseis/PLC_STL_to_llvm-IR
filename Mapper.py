@@ -59,9 +59,6 @@ def Mapper (input_) :
 
         elif InstructionList[instruction] == 'controller' :
             result = controller_.convert(input_)
-
-    #    elif InstructionList[instruction] == 'counter' :
-    #        result = counter.convert(input_)
     else :
         error = "error:non-defined instruction"
         return error
