@@ -16,7 +16,8 @@ def operation_mapper (operation) :
         # 16-bit int math function
         "AND" : "%s = AND i1 %s, %s",
         "OR" : "%s = OR i1 %s, %s",
-        "=" : "i1 %s = i1 %s"
+        "=" : "i1 %s = i1 %s",
+        "NOT" : "i1 %s = XOR i1 %s 1"
     }
     return table[operation]
 
