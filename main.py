@@ -37,6 +37,7 @@ class Stack :
         return self.stack
 
 def run(input_):
+    operator = ''
     a = Stack()
     # Stack Excution Test
     count = 0
@@ -46,7 +47,13 @@ def run(input_):
             a.StackViewer()
 
         elif i[0] == 'T' :
-            print ("==" + i[1])
+            temp = []
+            temp.append(operator)
+            temp.append(a.getStack())
+            temp.append(i[1])
+            
+            print(Mapper.Mapper(temp))
+            a.ClearStack()
         else :
             a.StackViewer()
             print (i)
@@ -55,11 +62,7 @@ def run(input_):
             else :
                 a.StackViewer()
                 print(i)
-                temp = []
-                temp.append(i[0])
-                temp.append(a.getStack())
-                print(Mapper.Mapper(temp))
-                a.ClearStack()
+                operator = i[0]
 
 
     a.ClearStack()
