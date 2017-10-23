@@ -7,13 +7,13 @@ def convert (input_) :
     llvm_operator, register, status = operation_mapper(operator)
 
     if register == 'none' :
-        llvm = llvm_operator + ' ' + label + '\n'
+        llvm = str(llvm_operator) + ' ' + str(label) + '\n'
     else :
         llvm = ''
-        llvm += '%cond = icmp eq i32 ' + register + ', ' + str(status) + '\n'
+        llvm += '%cond = icmp eq i32 ' + str(register) + ', ' + str(status) + '\n'
         llvm += 'br i1 %cond, label %IfEqual, label %IfUnEqual\n'
         llvm += 'IfEqual :\n'
-        llvm += llvm_operator + ' ' + label + '\n'
+        llvm += str(llvm_operator) + ' ' + str(label) + '\n'
 
     return llvm
 
