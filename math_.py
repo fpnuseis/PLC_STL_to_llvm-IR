@@ -14,7 +14,7 @@ def convert (input_) :
     param += ' '
 
     llvm = (
-        'output_' + ' = ' +
+        output + ' = ' +
         llvm_operator + ' ' +
         param
     )
