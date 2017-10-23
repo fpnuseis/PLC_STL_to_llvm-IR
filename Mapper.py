@@ -50,18 +50,18 @@ InstructionList = {
 def Mapper (input_) :
     instruction = input_[0]
 
-    if InstructionList[instruction] == 'math' :
-        result = math_.convert(input_)
+    if instruction in InstructionList:
+        if InstructionList[instruction] == 'math' :
+            result = math_.convert(input_)
 
-    elif InstructionList[instruction] == 'bitlogic' :
-        result = bitlogic.convert(input_)
+        elif InstructionList[instruction] == 'bitlogic' :
+            result = bitlogic.convert(input_)
 
-    elif InstructionList[instruction] == 'controller' :
-        result = controller_.convert(input_)
+        elif InstructionList[instruction] == 'controller' :
+            result = controller_.convert(input_)
 
-#    elif InstructionList[instruction] == 'counter' :
-#        result = counter.convert(input_)
-
+    #    elif InstructionList[instruction] == 'counter' :
+    #        result = counter.convert(input_)
     else :
         error = "error:non-defined instruction"
         return error

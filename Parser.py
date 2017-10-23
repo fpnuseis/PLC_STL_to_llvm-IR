@@ -47,7 +47,8 @@ def CodeExtractor(filename) :
     f.close()
     return output_,block_name
 
-res, block_name = CodeExtractor('./math.txt')
+#res, block_name = CodeExtractor('./math.txt')
 
-for i in range(0,len(res)):
-  print(Parser(res[i]))
+#for i in range(0,len(res)):
+#  print(Parser(res[i]))
+#  print('\n')

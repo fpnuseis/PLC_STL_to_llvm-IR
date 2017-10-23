@@ -1,7 +1,7 @@
 def convert (input_) :
     operator = input_[0]
     label = input_[1]
-
+    print(input_)
     print ('label : ' + str(label))
 
     llvm_operator, register, status = operation_mapper(operator)
