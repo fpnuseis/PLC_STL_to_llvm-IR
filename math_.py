@@ -53,13 +53,13 @@ def operation_mapper (operation) :
         ">=D" : "icmp sge i32",
         "<=D" : "icmp sle i32",
         ">D" : "icmp sgt i32",
-        "<D" : "icmp slt i32"
+        "<D" : "icmp slt i32",
         # comparison function        
-        "==R" : "icmp slt f32"        
-        "<>R" : "icmp slt f32"        
-        ">=R" : "icmp slt f32"        
-        "<=R" : "icmp slt f32"       
-        ">R" : "icmp slt f32"       
+        "==R" : "icmp slt f32",        
+        "<>R" : "icmp slt f32",        
+        ">=R" : "icmp slt f32",        
+        "<=R" : "icmp slt f32",       
+        ">R" : "icmp slt f32",       
         "<R" : "icmp slt f32"
     }
     return table[operation]
