@@ -48,11 +48,18 @@ def operation_mapper (operation) :
         "SIN" : "llvm.sin.f32",
         "COS" : "llvm.cos.f32",
         # comparison function
-        "==D" : "icmp eq",
-        "<>D" : "icmp ne",
-        ">=D" : "icmp sge",
-        "<=D" : "icmp sle",
-        ">D" : "icmp sgt",
-        "<D" : "icmp slt"
+        "==D" : "icmp eq i32",
+        "<>D" : "icmp ne i32",
+        ">=D" : "icmp sge i32",
+        "<=D" : "icmp sle i32",
+        ">D" : "icmp sgt i32",
+        "<D" : "icmp slt i32"
+        # comparison function        
+        "==R" : "icmp slt f32"        
+        "<>R" : "icmp slt f32"        
+        ">=R" : "icmp slt f32"        
+        "<=R" : "icmp slt f32"       
+        ">R" : "icmp slt f32"       
+        "<R" : "icmp slt f32"
     }
     return table[operation]
